@@ -46,14 +46,13 @@ for i in range(no_of_tickets):
         "phone": f"+91-90000000{i+1:02d}",  # Placeholder for phone number
         "seatNumber": f"A-{i+1:03d}",  # Placeholder for seat assignment
         "status": "active",  # Ticket status (active, used, cancelled)
-        "qrUrl": None  # Will be updated after QR is generated
+        "isSold": False  
     }
     result = collection.insert_one(document)
     print(f"Document inserted with ID: {result.inserted_id}")
-    s = f"https://cypherscanner.vercel.app/pass/{result.inserted_id}"
+    s = f"https://cypherscanner.vercel.app/pass/{result.inserted_id}" #replace this string with your own API
     url = pyqrcode.create(s)
     qrName = f"{result.inserted_id}.png"
     url.png(qrName, scale=6)
     add_qr_to_pdf("pass.pdf", qrName, f"{result.inserted_id}.pdf", page_number=0, x=540, y=80)
-    # Optionally update the document with the QR URL
-    collection.update_one({"_id": result.inserted_id}, {"$set": {"qrUrl": s}})
+   
