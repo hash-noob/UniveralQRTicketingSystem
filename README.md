@@ -1,4 +1,4 @@
-# TicketScanner
+# UniversalQRTicketingSystem
 
 A modern web application for managing, scanning, and validating event passes using QR codes/barcodes. Built with the MERN stack (MongoDB, Express, React, Node.js), TicketScanner streamlines event entry, pass management, and attendee tracking for tech fests and similar events.
 
